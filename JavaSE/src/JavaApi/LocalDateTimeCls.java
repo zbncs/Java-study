@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
  *  LocalTime：返回时分秒
  *  LocalDateTime：年月日时分秒
  *
- * LocalDateTime. now()：当前系统时间
+ * LocalDateTime  now()：当前系统时间
  *
  *  LocalDateTime.of(年, 月, 日, 时, 分, 秒)：初始化一个LocalDateTime对象
  *
@@ -45,7 +45,7 @@ public class LocalDateTimeCls {
         System.out.println(now1.getHour());
         System.out.println(now1.getMinute());
 
-//        LocalDateTimeToString();
+        // LocalDateTimeToString();
 
         StringToLocalDateTime();
     }

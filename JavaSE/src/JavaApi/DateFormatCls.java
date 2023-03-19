@@ -6,6 +6,14 @@ import java.util.Date;
 
 /**
  *  DateFormat: 抽象类，不能实例化；一般使用子类 SimpleDateFormat
+ *
+ *  SimpleDateFormat类的实例：
+ *
+ * new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+ *  format(Date d)
+ *
+ *  parse(String s)
+ *
  * */
 public class DateFormatCls {
     public static void main(String[] args) throws ParseException {
