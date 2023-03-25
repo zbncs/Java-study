@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * PreparedStatement是Statement的子接口，可以防止sql注入问题。可以通过Connection接口中的prepareStatement(sql)方法获得PreparedStatement的对象。
  * sql提前创建好的。sql语句中需要参数。使用？进行占位
- * 
+ *
  *
  *
  * */
