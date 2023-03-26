@@ -1,4 +1,4 @@
-package 反射;
+package FanShe;
 
 /*
 *获取Class类的对象的三种方式:
@@ -20,7 +20,7 @@ public class ClassDemo01 {
         System.out.println(name);
         System.out.println(simpleName);
         // 2.使用Class类中的forName()
-        Class<?> aClass1 = Class.forName("反射.ClassDemo01");
+        Class<?> aClass1 = Class.forName("FanShe.ClassDemo01");
         System.out.println(aClass1);
 
         // 3.使用实例的getClass方法

@@ -1,4 +1,4 @@
-package 反射;
+package FanShe;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 public class ClassDemo03反射获取成员变量 {
     @Test
     public void test01() throws ClassNotFoundException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        Class<?> aClass = Class.forName("反射.Person");
+        Class<?> aClass = Class.forName("FanShe.Person");
         Field address = aClass.getDeclaredField("address");
         address.setAccessible(true);
 

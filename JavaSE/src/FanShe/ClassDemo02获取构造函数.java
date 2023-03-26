@@ -1,4 +1,4 @@
-package 反射;
+package FanShe;
 
 /*
 Class类中用于获取构造器的方法：
@@ -24,7 +24,7 @@ public class ClassDemo02获取构造函数 {
     @Test
     public void test01() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         //
-        Class<?> aClass = Class.forName("反射.Student");
+        Class<?> aClass = Class.forName("FanShe.Student");
         Constructor<?> constructor = aClass.getConstructor(String.class);
         Student o = (Student) constructor.newInstance("zhangsan");
         System.out.println(o);
@@ -35,7 +35,7 @@ public class ClassDemo02获取构造函数 {
     @Test
     public void test02() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         // 获取私有构造函数
-        Class<?> aClass = Class.forName("反射.Student");
+        Class<?> aClass = Class.forName("FanShe.Student");
         Constructor<?> constructor = aClass.getDeclaredConstructor();
         // 暴力反射，取消检测
         constructor.setAccessible(true);
@@ -48,14 +48,14 @@ public class ClassDemo02获取构造函数 {
     @Test
     public void test03() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         // 要求类中必须有公共无参构造函数
-        Student o = (Student) Class.forName("反射.Student").newInstance();
+        Student o = (Student) Class.forName("FanShe.Student").newInstance();
         o.show();
     }
 
     @Test
     public void test04() throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
         // 满参构造函数
-        Class<?> aClass = Class.forName("反射.Student");
+        Class<?> aClass = Class.forName("FanShe.Student");
         Constructor<?> constructor = aClass.getConstructor(String.class, int.class);
         Student haha = (Student) constructor.newInstance("haha", 18);
 

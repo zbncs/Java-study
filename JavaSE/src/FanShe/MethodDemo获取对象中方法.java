@@ -1,4 +1,4 @@
-package 反射;
+package FanShe;
 
 import org.junit.Test;
 
@@ -9,14 +9,14 @@ public class MethodDemo获取对象中方法 {
     @Test
     public void test01() throws NoSuchMethodException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException {
         // 无参方法调用
-        Class<?> aClass = Class.forName("反射.Student1");
+        Class<?> aClass = Class.forName("FanShe.Student1");
         Method method = aClass.getDeclaredMethod("show");
         method.invoke(aClass.newInstance());
     }
     @Test
     public void test02() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         // 有参方法调用
-        Class<?> aClass = Class.forName("反射.Student1");
+        Class<?> aClass = Class.forName("FanShe.Student1");
         Method method = aClass.getDeclaredMethod("method", int.class, String.class);
         method.setAccessible(true);
         // method是静态方法，所以第一个参数可以为null
