@@ -18,5 +18,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="dom4j-2.1.4" level="project" />
+    <orderEntry type="library" name="jaxen-2.0.0-javadoc" level="project" />
+    <orderEntry type="library" name="jaxen-2.0.0-javadoc (2)" level="project" />
+    <orderEntry type="library" name="jaxen-1.1.2" level="project" />
   </component>
 </module>

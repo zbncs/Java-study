@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+1.xml都是自定义的标签：
+    双标签：<标签名 属性名="属性值">文本</标签名>
+    单标签：<标签名 属性名="属性值" />
+2.只能有一个根标签
+3.特殊符号：
+    > : &gt;
+    < : &lt;
+    &amp; : &
+    &apos; : '
+    &quot; : "
+4.CDATA区：原样显示
+       <![CDATA[书写内容]]>
+ 5.CD + enter: CDATA快捷键
+-->
+<persons>
+    <person>
+        <name>张三</name>
+        <age>18</age>
+        <sex value="男"/>
+        <book>&lt;java&gt;</book>
+        <book1><![CDATA[<java>]]></book1>
+        <slf><![CDATA[
+            <8888>
+        ]]></slf>
+    </person>
+</persons>
+
+
