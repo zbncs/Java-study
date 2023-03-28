@@ -1,10 +1,10 @@
 package org.example.pojo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class User {
     private Integer id;
-    private String username;
+    private String userName;
     private Date birthday;
     private String sex;
     private String address;
@@ -12,9 +12,9 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String username, Date birthday, String sex, String address) {
+    public User(Integer id, String userName, Date birthday, String sex, String address) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
         this.birthday = birthday;
         this.sex = sex;
         this.address = address;
@@ -28,12 +28,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Date getBirthday() {
@@ -64,7 +64,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", userName='" + userName + '\'' +
                 ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +

@@ -6,10 +6,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.dao.UserMapper;
 import org.example.pojo.User;
+import org.example.util.SessionUtil;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,7 +35,62 @@ public class MyBatisTest {
 
     }
     @Test
-    public void show1() {
-        System.out.println("show1");
+    public void queryUserById() throws IOException {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+        SqlSessionFactory factory = builder.build(is);
+        SqlSession sqlSession = factory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = mapper.queryUserById(1);
+        System.out.println(user);
     }
+
+    @Test
+    public void addUser() throws IOException {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+        SqlSessionFactory factory = builder.build(is);
+        SqlSession sqlSession = factory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        User user1 = new User();
+        user1.setUserName("蒋玉");
+        user1.setBirthday(new Date(1999, 10, 1));
+        user1.setSex("女");
+        user1.setAddress("我家");
+        mapper.addUser(user1);
+        // mybatis 控制事务默认是手动提交事务，所以针对增删改需要提交事务，也可以设置自动提交事务
+        // 1.手动提交：sqlSession.commit()
+        // 2.自动提交事务 SqlSession sqlSession = factory.openSession(true);
+        sqlSession.commit();
+    }
+
+    @Test
+    public void updateUser() throws IOException {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+        SqlSessionFactory factory = builder.build(is);
+        SqlSession sqlSession = factory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user1 = new User();
+        user1.setId(3);
+        user1.setUserName("蒋玉1");
+        user1.setSex("女");
+
+        mapper.updateUser(user1);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void deleteUser() throws IOException {
+//        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+//        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+//        SqlSessionFactory factory = builder.build(is);
+//        SqlSession sqlSession = factory.openSession(true);
+        SqlSession sqlSession = SessionUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        mapper.deleteUser(4);
+    }
+
 }

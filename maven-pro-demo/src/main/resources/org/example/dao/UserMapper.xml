@@ -6,4 +6,24 @@
     <select id="queryAllUsers" resultType="User">
         select * from user
     </select>
+    <!--
+
+    -->
+    <select id="queryUserById" parameterType="Integer" resultType="User">
+        select * from user where id=#{id}
+    </select>
+
+    <insert id="addUser" parameterType="User">
+        <!--     书写实体类的成员变量名   -->
+        insert into user values(null, #{username}, #{birthday}, #{sex}, #{address});
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        <!--   等号左边是字段名，右边是实体类成员变量名     -->
+        update user set user_name=#{userName},sex=#{sex} where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
 </mapper>
