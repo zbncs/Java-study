@@ -26,4 +26,75 @@
     <delete id="deleteUser" parameterType="int">
         delete from user where id=#{id}
     </delete>
+
+<!--    动态SQL查询 ognl表达式-->
+    <select id="queryUsersBySexOrUserName" resultType="User">
+        select * from user where sex='男' 
+        <if test="userName != null and userName.trim() != ''">
+            and user_name like concat('%', #{userName}, '%')
+        </if>
+    </select>
+
+    <select id="queryUsersBySexOrUserNameOrAddr" resultType="User">
+        select * from user where sex='男'
+        <choose>
+            <when test="userName != null and userName.trim() != ''">
+                and user_name like concat('%', #{userName}, '%')
+            </when>
+            <when test="address != null and address.trim() != ''">
+                and address=#{address}
+            </when>
+            <otherwise>
+                and user_name='孙悟空'
+            </otherwise>
+        </choose>
+    </select>
+<!--
+where标签：拼接多条件查询时
+     1、能够添加where关键字；
+     2、能够去除多余的and或者or关键字；
+-->
+    <select id="queryUsersByUserNameAndAddress" resultType="User">
+        select * from user
+        <where>
+            <if test="userName != null and userName.trim() != ''">
+                user_name like concat('%', #{userName}, '%')
+            </if>
+            <if test="address != null and address.trim() != ''">
+                and address=#{address}
+            </if>
+        </where>
+    </select>
+
+<!--
+set标签：在update语句中,可以自动添加一个set关键字，并且会将动态sql最后多余的逗号去除。
+-->
+    <update id="updateUserById">
+        update user
+        <set>
+            <if test="userName != null">
+                user_name=#{userName},
+            </if>
+            <if test="birthday != null">
+                birthday=#{birthday},
+            </if>
+            <if test="sex != null">
+                sex=#{sex},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+<!--
+
+-->
+    <select id="findByIds" resultType="User">
+        select * from user where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

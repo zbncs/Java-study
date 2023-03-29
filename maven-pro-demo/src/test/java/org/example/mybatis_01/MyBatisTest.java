@@ -11,6 +11,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -93,4 +95,55 @@ public class MyBatisTest {
         mapper.deleteUser(4);
     }
 
-}
+
+//    动态SQL查询
+    @Test
+    public void queryUsersBySexOrUserName() {
+        SqlSession sqlSession = SessionUtil.getSqlSession(false);
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> users = mapper.queryUsersBySexOrUserName("孙");
+        System.out.println(users);
+    }
+
+    @Test
+    public void queryUsersBySexOrUserNameOrAddr() {
+        SqlSession sqlSession = SessionUtil.getSqlSession(false);
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> users = mapper.queryUsersBySexOrUserNameOrAddr("", "花果山水帘洞");
+        System.out.println(users);
+    }
+
+    @Test
+    public void queryUsersByUserNameAndAddress() {
+        SqlSession sqlSession = SessionUtil.getSqlSession(false);
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> users = mapper.queryUsersByUserNameAndAddress("", "花果山水帘洞");
+        System.out.println(users);
+    }
+
+    @Test
+    public void updateUserById() {
+        SqlSession sqlSession = SessionUtil.getSqlSession(true);
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user1 = new User();
+        user1.setId(3);
+        user1.setUserName("蒋玉");
+        user1.setSex("女");
+        user1.setAddress("我家");
+        user1.setBirthday(new Date());
+
+        mapper.updateUserById(user1);
+    }
+
+    @Test
+    public void findByIds() {
+        SqlSession sqlSession = SessionUtil.getSqlSession(false);
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        ArrayList<Integer> list = new ArrayList<>();
+        Collections.addAll(list, 1, 2, 3);
+        List<User> users = mapper.findByIds(list);
+        System.out.println(users);
+    }
+
+
+    }
