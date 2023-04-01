@@ -5,46 +5,36 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="sweetApple" class="com.imooc.spring.ioc.entity.Apple">
-        <property name="title" value="红富士"></property>
-        <property name="origin" value="欧洲"></property>
-        <property name="color" value="红色"></property>
+        <property name="title" value="红富士" />
+        <property name="origin" value="欧洲" />
+        <property name="color" value="红色" />
     </bean>
 
     <bean id="sourApple" class="com.imooc.spring.ioc.entity.Apple">
-        <property name="title" value="青苹果"></property>
-        <property name="origin" value="中亚"></property>
-        <property name="color" value="绿色"></property>
+        <property name="title" value="青苹果" />
+        <property name="origin" value="中亚" />
+        <property name="color" value="绿色" />
     </bean>
 
     <bean id="softApple" class="com.imooc.spring.ioc.entity.Apple">
-        <property name="title" value="金帅"></property>
-        <property name="origin" value="中国"></property>
-        <property name="color" value="黄色"></property>
+        <property name="title" value="金帅" />
+        <property name="origin" value="中国" />
+        <property name="color" value="黄色" />
     </bean>
 
     <!--    child-->
     <bean id="lily" class="com.imooc.spring.ioc.entity.Child">
-        <property name="name" value="莉莉"></property>
-        <!--        关联关系ref-->
-        <property name="apple" ref="sweetApple"></property>
+        <property name="name" value="莉莉" />
+        <!--   setter方法依赖注入   关联关系ref-->
+        <property name="apple" ref="sweetApple" />
     </bean>
     <bean id="andy" class="com.imooc.spring.ioc.entity.Child">
-        <property name="name" value="安迪"></property>
-        <!--        关联关系ref-->
-        <property name="apple" ref="sourApple"></property>
+        <property name="name" value="安迪" />
+        <property name="apple" ref="sourApple" />
     </bean>
     <bean id="luna" class="com.imooc.spring.ioc.entity.Child">
-        <property name="name" value="露娜"></property>
-        <!--        关联关系ref-->
-        <property name="apple" ref="softApple"></property>
+        <property name="name" value="露娜" />
+        <property name="apple" ref="softApple" />
     </bean>
-
-<!--   构造函数实例化-->
-    <bean id="apple2" class="com.imooc.spring.ioc.entity.Apple">
-        <constructor-arg name="title" value="红富士" />
-        <constructor-arg name="color" value="欧洲" />
-        <constructor-arg name="origin" value="红色" />
-    </bean>
-
 
 </beans>

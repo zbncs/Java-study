@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sourApple" class="com.imooc.spring.ioc.entity.Apple">
+        <property name="title" value="青苹果" />
+        <property name="origin" value="中亚" />
+        <property name="color" value="绿色" />
+    </bean>
+
+    <!--   构造函数注入对象-->
+    <bean id="andy" class="com.imooc.spring.ioc.entity.Child">
+       <constructor-arg name="name" value="安迪" />
+    <!--  ref指向sourApple Bean-->
+        <constructor-arg name="apple" ref="sourApple" />
+    </bean>
+
+
+</beans>
