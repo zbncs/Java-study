@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringApplication {
     public static void main(String[] args) {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext1.xml");
         UserService userService = ac.getBean("userService", UserService.class);
 
         userService.createUser();

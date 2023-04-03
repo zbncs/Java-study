@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="https://www.springframework.org/schema/context"
-       xmlns:aop="https://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
-        https://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd
-        https://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="userDao" class="com.imooc.spring.aop.dao.UserDao" />
@@ -18,7 +18,16 @@
     <bean id="employeeService" class="com.imooc.spring.aop.service.EmployeeService">
         <property name="employeeDao" ref="employeeDao" />
     </bean>
-
+    <!-- aop配置 -->
+    <!-- 实现切面类配置Bean-->
     <bean id="methodAspect" class="com.imooc.spring.aop.aspect.MethodAspect" />
+    <aop:config>
+    <!-- 定义pointcut-->
+        <aop:pointcut id="pointcut" expression="execution(public * com.imooc..*.*(..))"/>
+        <aop:aspect ref="methodAspect">
+        <!--  配置advice-->
+            <aop:before method="printExecutionTime" pointcut-ref="pointcut" />
+        </aop:aspect>
+    </aop:config>
 
 </beans>
